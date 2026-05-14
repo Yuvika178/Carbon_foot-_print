@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarbonTrace — Know Your Footprint</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="bg-orbs">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="logo">
+            <span class="logo-leaf">⬡</span>
+            <span class="logo-text">CarbonTrace</span>
+        </div>
+        <nav class="main-nav">
+            <button class="nav-btn active" data-tab="calculator">Calculator</button>
+            <button class="nav-btn" data-tab="results">Results</button>
+            <button class="nav-btn" data-tab="history">History</button>
+            <button class="nav-btn" data-tab="about">About</button>
+        </nav>
+        <div class="header-badge">
+            <span class="pulse-dot"></span> Live Tracker
+        </div>
+    </header>
+
+    <main class="main-content">
+
+        <section id="tab-calculator" class="tab active">
+            <div class="section-hero">
+                <h1 class="hero-title">What's your<br><em>carbon story?</em></h1>
+                <p class="hero-sub">Fill in your habits. We calculate your annual CO₂ emission instantly.</p>
+            </div>
+
+            <div class="calculator-grid">
+
+                <div class="card card-transport">
+                    <div class="card-icon">🚗</div>
+                    <h2 class="card-title">Transport</h2>
+
+                    <div class="field-group">
+                        <label>Car type</label>
+                        <div class="select-wrapper">
+                            <select id="carType">
+              <option value="none">No car</option>
+              <option value="electric">Electric</option>
+              <option value="hybrid">Hybrid</option>
+              <option value="petrol">Petrol / Gasoline</option>
+              <option value="diesel">Diesel</option>
+              <option value="cng">CNG</option>
+            </select>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Km driven per year</label>
+                        <div class="input-row">
+                            <input type="range" id="kmDriven" min="0" max="50000" step="500" value="10000">
+                            <span class="range-val" id="kmDrivenVal">10,000 km</span>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Flights per year (short-haul)</label>
+                        <div class="input-row">
+                            <input type="range" id="flightsShort" min="0" max="20" step="1" value="2">
+                            <span class="range-val" id="flightsShortVal">2 flights</span>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Flights per year (long-haul)</label>
+                        <div class="input-row">
+                            <input type="range" id="flightsLong" min="0" max="10" step="1" value="0">
+                            <span class="range-val" id="flightsLongVal">0 flights</span>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Public transit use</label>
+                        <div class="select-wrapper">
+                            <select id="transitUse">
+              <option value="never">Never</option>
+              <option value="rare">Occasionally</option>
+              <option value="sometimes" selected>Sometimes</option>
+              <option value="often">Often</option>
+              <option value="always">Daily commuter</option>
+            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-home">
+                    <div class="card-icon">🏠</div>
+                    <h2 class="card-title">Home Energy</h2>
+
+                    <div class="field-group">
+                        <label>Electricity source</label>
+                        <div class="select-wrapper">
+                            <select id="electricSource">
+              <option value="coal">Mostly coal grid</option>
+              <option value="mixed" selected>Mixed grid</option>
+              <option value="renewable">Mostly renewable</option>
+              <option value="solar">Own solar</option>
+            </select>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Monthly electricity (kWh)</label>
+                        <div class="input-row">
+                            <input type="range" id="electricity" min="0" max="1000" step="10" value="200">
+                            <span class="range-val" id="electricityVal">200 kWh</span>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Natural gas (cu.m/year)</label>
+                        <div class="input-row">
+                            <input type="range" id="naturalGas" min="0" max="3000" step="50" value="300">
+                            <span class="range-val" id="naturalGasVal">300 m³</span>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Home size</label>
+                        <div class="select-wrapper">
+                            <select id="homeSize">
+              <option value="small">Studio / 1BHK</option>
+              <option value="medium" selected>2–3 BHK</option>
+              <option value="large">4+ BHK / Villa</option>
+            </select>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Heating / cooling system</label>
+                        <div class="select-wrapper">
+                            <select id="hvac">
+              <option value="none">Fans only</option>
+              <option value="ac" selected>AC (split unit)</option>
+              <option value="central">Central HVAC</option>
+            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-diet">
+                    <div class="card-icon">🥗</div>
+                    <h2 class="card-title">Diet & Food</h2>
+
+                    <div class="field-group">
+                        <label>Diet type</label>
+                        <div class="select-wrapper">
+                            <select id="dietType">
+              <option value="vegan">Vegan</option>
+              <option value="vegetarian">Vegetarian</option>
+              <option value="pescatarian">Pescatarian</option>
+              <option value="flexitarian" selected>Flexitarian</option>
+              <option value="omnivore">Omnivore</option>
+              <option value="heavymeat">Heavy meat eater</option>
+            </select>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Locally sourced food</label>
+                        <div class="select-wrapper">
+                            <select id="localFood">
+              <option value="never">Rarely / never</option>
+              <option value="sometimes" selected>Sometimes</option>
+              <option value="mostly">Mostly local</option>
+              <option value="always">Always local / grown</option>
+            </select>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Food waste level</label>
+                        <div class="select-wrapper">
+                            <select id="foodWaste">
+              <option value="low">Very little waste</option>
+              <option value="medium" selected>Average waste</option>
+              <option value="high">Quite wasteful</option>
+            </select>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Bottled water (liters/day)</label>
+                        <div class="input-row">
+                            <input type="range" id="bottledWater" min="0" max="5" step="0.5" value="1">
+                            <span class="range-val" id="bottledWaterVal">1 L</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-lifestyle">
+                    <div class="card-icon">💼</div>
+                    <h2 class="card-title">Lifestyle</h2>
+
+                    <div class="field-group">
+                        <label>Monthly shopping spend (₹)</label>
+                        <div class="input-row">
+                            <input type="range" id="shopping" min="0" max="50000" step="500" value="5000">
+                            <span class="range-val" id="shoppingVal">₹5,000</span>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Online streaming hours/day</label>
+                        <div class="input-row">
+                            <input type="range" id="streaming" min="0" max="12" step="0.5" value="3">
+                            <span class="range-val" id="streamingVal">3 hrs</span>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Do you recycle regularly?</label>
+                        <div class="select-wrapper">
+                            <select id="recycling">
+              <option value="never">No</option>
+              <option value="sometimes" selected>Sometimes</option>
+              <option value="always">Yes, consistently</option>
+            </select>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label>New electronics per year</label>
+                        <div class="input-row">
+                            <input type="range" id="electronics" min="0" max="10" step="1" value="1">
+                            <span class="range-val" id="electronicsVal">1 device</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="calc-action">
+                <button class="btn-calculate" id="btnCalculate">
+        <span class="btn-icon">⚡</span>
+        Calculate My Footprint
+      </button>
+            </div>
+        </section>
+
+        <section id="tab-results" class="tab">
+            <div class="results-wrapper" id="resultsWrapper">
+                <div class="no-results">
+                    <div class="no-results-icon">📊</div>
+                    <p>Run the calculator first to see your results here.</p>
+                    <button class="btn-secondary" onclick="switchTab('calculator')">Go to Calculator</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-history" class="tab">
+            <div class="history-header">
+                <h2>Your History</h2>
+                <button class="btn-ghost" id="btnClearHistory">Clear All</button>
+            </div>
+            <div class="history-list" id="historyList">
+                <div class="empty-history">No calculations yet. Your saved results will appear here.</div>
+            </div>
+        </section>
+
+        <section id="tab-about" class="tab">
+            <div class="about-content">
+                <h2 class="about-title">Emission Factors & Sources</h2>
+                <p class="about-intro">All calculations follow IPCC AR6 (2021), IEA World Energy Outlook, and DESNZ UK Greenhouse Gas Conversion Factors. Values are annual kg CO₂ equivalent (kg CO₂e).</p>
+
+                <table class="factor-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Item</th>
+                            <th>Factor</th>
+                            <th>Source</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Transport</td>
+                            <td>Petrol car (per km)</td>
+                            <td>0.192 kg CO₂e</td>
+                            <td>DESNZ 2023</td>
+                        </tr>
+                        <tr>
+                            <td>Transport</td>
+                            <td>Diesel car (per km)</td>
+                            <td>0.171 kg CO₂e</td>
+                            <td>DESNZ 2023</td>
+                        </tr>
+                        <tr>
+                            <td>Transport</td>
+                            <td>Hybrid car (per km)</td>
+                            <td>0.110 kg CO₂e</td>
+                            <td>DESNZ 2023</td>
+                        </tr>
+                        <tr>
+                            <td>Transport</td>
+                            <td>Electric car (per km)</td>
+                            <td>0.053 kg CO₂e</td>
+                            <td>IEA 2022</td>
+                        </tr>
+                        <tr>
+                            <td>Transport</td>
+                            <td>Short-haul flight</td>
+                            <td>255 kg CO₂e/flight</td>
+                            <td>IPCC AR6</td>
+                        </tr>
+                        <tr>
+                            <td>Transport</td>
+                            <td>Long-haul flight</td>
+                            <td>1200 kg CO₂e/flight</td>
+                            <td>IPCC AR6</td>
+                        </tr>
+                        <tr>
+                            <td>Energy</td>
+                            <td>Coal grid electricity</td>
+                            <td>0.82 kg CO₂e/kWh</td>
+                            <td>IEA 2022</td>
+                        </tr>
+                        <tr>
+                            <td>Energy</td>
+                            <td>Mixed grid</td>
+                            <td>0.45 kg CO₂e/kWh</td>
+                            <td>IEA 2022</td>
+                        </tr>
+                        <tr>
+                            <td>Energy</td>
+                            <td>Renewable grid</td>
+                            <td>0.10 kg CO₂e/kWh</td>
+                            <td>IEA 2022</td>
+                        </tr>
+                        <tr>
+                            <td>Energy</td>
+                            <td>Natural gas</td>
+                            <td>2.04 kg CO₂e/m³</td>
+                            <td>DESNZ 2023</td>
+                        </tr>
+                        <tr>
+                            <td>Diet</td>
+                            <td>Vegan diet (annual)</td>
+                            <td>1,100 kg CO₂e</td>
+                            <td>Oxford/Poore 2018</td>
+                        </tr>
+                        <tr>
+                            <td>Diet</td>
+                            <td>Vegetarian (annual)</td>
+                            <td>1,700 kg CO₂e</td>
+                            <td>Oxford/Poore 2018</td>
+                        </tr>
+                        <tr>
+                            <td>Diet</td>
+                            <td>Heavy meat eater</td>
+                            <td>3,300 kg CO₂e</td>
+                            <td>Oxford/Poore 2018</td>
+                        </tr>
+                        <tr>
+                            <td>Lifestyle</td>
+                            <td>Online streaming</td>
+                            <td>0.036 kg CO₂e/hr</td>
+                            <td>IEA 2022</td>
+                        </tr>
+                        <tr>
+                            <td>Lifestyle</td>
+                            <td>New electronics</td>
+                            <td>300 kg CO₂e/device</td>
+                            <td>IPCC AR6</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="benchmarks-box">
+                    <h3>Global Benchmarks (kg CO₂e / year)</h3>
+                    <div class="benchmark-grid">
+                        <div class="bm-item"><span class="bm-val">4,700</span><span class="bm-lbl">World Average</span></div>
+                        <div class="bm-item"><span class="bm-val">1,800</span><span class="bm-lbl">India Average</span></div>
+                        <div class="bm-item"><span class="bm-val">16,000</span><span class="bm-lbl">US Average</span></div>
+                        <div class="bm-item"><span class="bm-val">2,000</span><span class="bm-lbl">Paris 2030 Target</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <span>CarbonTrace © 2025</span>
+        <span>Data: IPCC AR6 · IEA · DESNZ 2023</span>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
